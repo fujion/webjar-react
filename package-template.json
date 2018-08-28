@@ -1,0 +1,9 @@
+{
+  "name": "webjar-react",
+  "version": "${version.unrevise}",
+  "description": "React Framework",
+  "dependencies": {
+    "react": "${version.unrevise}",
+    "react-dom": "${version.unrevise}"
+    }
+}

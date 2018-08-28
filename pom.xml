@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.fujion.webjars</groupId>
+		<artifactId>fujion-webjars</artifactId>
+		<version>2.1.1</version>
+	</parent>
+
+	<name>React</name>
+	<artifactId>webjar-react</artifactId>
+	<version>16.4.2-SNAPSHOT</version>
+	<description>React Framework.</description>
+	
+	<properties>
+		<systemjs>
+			{
+				paths: {
+					"react": "dist/react.js",
+					"react-dom": "dist/react-dom.js"
+				}
+			}			
+		</systemjs>
+	</properties>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>precompile</id>
+						<configuration>
+							<target>
+								<copy tofile="${src.rootdir}/package.json" file="${basedir}/package-template.json">
+							        <filterchain>
+							            <expandproperties />
+							        </filterchain>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>postcompile</id>
+						<configuration>
+							<target>
+								<move todir="${webjar.target}">
+									<fileset dir="${src.rootdir}/node_modules/react" includes="LICENSE,README.md" />
+								</move>
+								<move tofile="${webjar.target}/dist/react.js" file="${src.rootdir}/node_modules/react/umd/react.development.js"/>
+								<move tofile="${webjar.target}/dist/react.min.js" file="${src.rootdir}/node_modules/react/umd/react.production.min.js"/>
+								<move tofile="${webjar.target}/dist/react-dom.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.development.js"/>
+								<move tofile="${webjar.target}/dist/react-dom.min.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.production.min.js"/>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
