@@ -9,7 +9,7 @@
 
 	<name>React</name>
 	<artifactId>webjar-react</artifactId>
-	<version>16.4.2-SNAPSHOT</version>
+	<version>16.4.2</version>
 	<description>React Framework.</description>
 	
 	<properties>
@@ -51,10 +51,10 @@
 								<copy todir="${webjar.target}">
 									<fileset dir="${src.rootdir}/node_modules/react" includes="LICENSE,README.md" />
 								</copy>
-								<copy tofile="${webjar.target}/dist/react.js" file="${src.rootdir}/node_modules/react/umd/react.development.js"/>
-								<copy tofile="${webjar.target}/dist/react.min.js" file="${src.rootdir}/node_modules/react/umd/react.production.min.js"/>
-								<copy tofile="${webjar.target}/dist/react-dom.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.development.js"/>
-								<copy tofile="${webjar.target}/dist/react-dom.min.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.production.min.js"/>
+								<copy tofile="${webjar.target}/dist/react.js" file="${src.rootdir}/node_modules/react/umd/react.development.js" />
+								<copy tofile="${webjar.target}/dist/react.min.js" file="${src.rootdir}/node_modules/react/umd/react.production.min.js" />
+								<copy tofile="${webjar.target}/dist/react-dom.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.development.js" />
+								<copy tofile="${webjar.target}/dist/react-dom.min.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.production.min.js" />
 							</target>
 						</configuration>
 					</execution>
@@ -62,4 +62,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <tag>16.4.2</tag>
+  </scm>
 </project>
