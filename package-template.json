@@ -1,7 +1,7 @@
 {
-  "name": "webjar-react",
+  "name": "${project.artifactId}",
   "version": "${version.unrevise}",
-  "description": "React Framework",
+  "description": "${project.description}",
   "dependencies": {
     "react": "${version.unrevise}",
     "react-dom": "${version.unrevise}"
