@@ -9,7 +9,7 @@
 
 	<name>React</name>
 	<artifactId>webjar-react</artifactId>
-	<version>16.8.3</version>
+	<version>16.8.3-1-SNAPSHOT</version>
 	<description>React Framework.</description>
 	
 	<properties>
@@ -62,8 +62,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-  <scm>
-    <tag>16.8.3</tag>
-  </scm>
 </project>
