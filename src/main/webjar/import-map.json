@@ -1,6 +1,8 @@
 {
   "imports": {
     "react": "dist/react.js",
-    "react-dom": "dist/react-dom.js"
+    "react/": "dist/",
+    "react-dom": "dist/react-dom.js",
+    "react-dom/": "dist/"
   }
 }

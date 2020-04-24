@@ -44,11 +44,10 @@
 							<target>
 								<copy todir="${webjar.target}">
 									<fileset dir="${src.rootdir}/node_modules/react" includes="LICENSE,README.md" />
+									<fileset dir="${src.rootdir}/node_modules/react/umd/" />
+									<fileset dir="${src.rootdir}/node_modules/react-dom/umd/" />
+									<regexpmapper from="^(.*)((?:development\.|production\.){1}|(profiling\.){1})(.*)$$" to="dist/\1\3\4" />
 								</copy>
-								<copy tofile="${webjar.target}/dist/react.js" file="${src.rootdir}/node_modules/react/umd/react.development.js" />
-								<copy tofile="${webjar.target}/dist/react.min.js" file="${src.rootdir}/node_modules/react/umd/react.production.min.js" />
-								<copy tofile="${webjar.target}/dist/react-dom.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.development.js" />
-								<copy tofile="${webjar.target}/dist/react-dom.min.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.production.min.js" />
 							</target>
 						</configuration>
 					</execution>
