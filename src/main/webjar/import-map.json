@@ -1,5 +1,5 @@
 {
-  "paths": {
+  "imports": {
     "react": "dist/react.js",
     "react-dom": "dist/react-dom.js"
   }
