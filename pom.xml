@@ -9,7 +9,7 @@
 
 	<name>React</name>
 	<artifactId>webjar-react</artifactId>
-	<version>16.13.1</version>
+	<version>17.0.1</version>
 	<description>React Framework.</description>
 	
 	<build>
