@@ -1,7 +1,7 @@
 const {src, dest, series} = require('gulp');
 const rename = require('gulp-rename');
 
-const srcDir = '${src.rootdir}/node_modules/';
+const srcDir = '${webjar.staging}/node_modules/';
 const destDir = '${webjar.target}/';
 
 function task1() {
