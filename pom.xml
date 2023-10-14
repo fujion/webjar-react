@@ -1,81 +1,60 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.fujion.webjars</groupId>
-		<artifactId>fujion-webjars</artifactId>
-		<version>3.2.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.fujion.webjars</groupId>
+        <artifactId>fujion-webjars</artifactId>
+        <version>3.2.0-SNAPSHOT</version>
+    </parent>
 
-	<name>React</name>
-	<artifactId>webjar-react</artifactId>
-	<version>18.2.0-SNAPSHOT</version>
-	<description>React Framework.</description>
+    <name>React</name>
+    <artifactId>webjar-react</artifactId>
+    <version>18.2.0-SNAPSHOT</version>
+    <description>React Framework.</description>
 
-	<properties>
-		<npm-install.skip>false</npm-install.skip>
-	</properties>
+    <properties>
+        <npm-install.skip>false</npm-install.skip>
+    </properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.fujion.webjars</groupId>
-				<artifactId>webjar-validator-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>validate-webjar</id>
-						<configuration>
-							<rules>
-								<rule>file_exists import-map.json</rule>
-								<rule>file_exists README.md</rule>
-								<rule>file_contains LICENSE "MIT License"</rule>
-								<rule>file_exists dist/react.js</rule>
-								<rule>file_exists dist/react-dom.js</rule>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>npm-install</id>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>precompile</id>
-						<configuration>
-							<target>
-								<copy tofile="${src.rootdir}/package.json" file="${basedir}/package-template.json">
-							        <filterchain>
-							            <expandproperties />
-							        </filterchain>
-								</copy>
-							</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>postcompile</id>
-						<configuration>
-							<target>
-								<copy todir="${webjar.target}">
-									<fileset dir="${src.rootdir}/node_modules/react" includes="LICENSE,README.md" />
-								</copy>
-								<copy tofile="${webjar.target}/dist/react.js" file="${src.rootdir}/node_modules/react/umd/react.development.js" />
-								<copy tofile="${webjar.target}/dist/react.min.js" file="${src.rootdir}/node_modules/react/umd/react.production.min.js" />
-								<copy tofile="${webjar.target}/dist/react-dom.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.development.js" />
-								<copy tofile="${webjar.target}/dist/react-dom.min.js" file="${src.rootdir}/node_modules/react-dom/umd/react-dom.production.min.js" />
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.fujion.webjars</groupId>
+                <artifactId>webjar-validator-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>validate-webjar</id>
+                        <configuration>
+                            <rules>
+                                <rule>file_exists import-map.json</rule>
+                                <rule>file_exists README.md</rule>
+                                <rule>file_contains LICENSE "MIT License"</rule>
+                                <rule>file_exists dist/react.js</rule>
+                                <rule>file_exists dist/react-dom.js</rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>precompile</id>
+                        <configuration>
+                            <target>
+                                <copy todir="${src.rootdir}">
+                                    <fileset dir="${basedir}/staging"/>
+                                    <filterchain>
+                                        <expandproperties/>
+                                    </filterchain>
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

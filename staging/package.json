@@ -2,8 +2,15 @@
   "name": "${project.artifactId}",
   "version": "${version.unrevise}",
   "description": "${project.description}",
+  "scripts": {
+    "postinstall": "gulp"
+  },
   "dependencies": {
     "react": "${version.unrevise}",
     "react-dom": "${version.unrevise}"
-    }
+    },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-rename": "^2.0.0"
+  }
 }
